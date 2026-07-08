@@ -204,8 +204,18 @@ export const MODULES: ModuleDef[] = [
     status: 'Retake',
     kind: 'baseline',
     note: 'Retake the audit here — before and after, side by side.',
-    built: false,
+    built: true,
     route: '/modules/inquiry',
+    duration: 'a small inquiry + your after photo',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'reflection & professional development' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'pedagogy & professional engagement' },
+      baleapAreas: ['scholarship', 'teaching'],
+      unescoBlocks: [
+        { aspect: 4, level: 'Deepen' }, // AI–pedagogy integration
+        { aspect: 5, level: 'Deepen' }, // AI to enhance organizational learning
+      ],
+    },
   },
 ];
 

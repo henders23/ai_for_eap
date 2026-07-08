@@ -33,7 +33,11 @@ export interface AnalysisField {
 }
 export interface AnalysisArtefact {
   kind: 'analysis';
-  heading: string;
+  /** Optional artefact heading (e.g. "Analyse the specimen"); omit for none. */
+  heading?: string;
+  /** Optional eyebrow override (e.g. "Artefact · your inquiry"); when set, the
+   *  "goes to portfolio" note is suppressed. */
+  label?: string;
   fields: AnalysisField[];
   hasDialogue?: boolean;
   dialogueHint?: string;
@@ -58,6 +62,8 @@ export interface WorkbenchConfig {
   journalPlaceholder: string;
   exportTitle: string;
   exportBody: string;
+  /** Export-nudge link label (default "Open portfolio →"). */
+  exportLinkLabel?: string;
 }
 
 export default function ModuleWorkbench({ config }: { config: WorkbenchConfig }) {
@@ -164,9 +170,9 @@ export default function ModuleWorkbench({ config }: { config: WorkbenchConfig })
             <span class="rail-eyebrow rail-eyebrow--terra">
               {artefact.kind === 'task-redesign'
                 ? 'Artefact · redesign a task'
-                : 'Artefact'}
+                : artefact.label ?? 'Artefact'}
             </span>
-            {artefact.kind === 'analysis' && (
+            {artefact.kind === 'analysis' && !artefact.label && (
               <span class="to-portfolio">goes to portfolio</span>
             )}
           </span>
@@ -175,7 +181,7 @@ export default function ModuleWorkbench({ config }: { config: WorkbenchConfig })
 
         {artefact.kind === 'analysis' && (
           <>
-            <h2 class="artefact-h2">{artefact.heading}</h2>
+            {artefact.heading && <h2 class="artefact-h2">{artefact.heading}</h2>}
             <div class="fields">
               {artefact.fields.map((f) => (
                 <div class={`field${f.dashed ? ' dashed' : ''}`} key={f.id}>
@@ -334,7 +340,7 @@ export default function ModuleWorkbench({ config }: { config: WorkbenchConfig })
       <div class="export-nudge">
         <p>{config.exportTitle}</p>
         <p class="sub">{config.exportBody}</p>
-        <a href="/portfolio">Open portfolio →</a>
+        <a href="/portfolio">{config.exportLinkLabel ?? 'Open portfolio →'}</a>
       </div>
     </div>
   );

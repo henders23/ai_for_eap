@@ -94,7 +94,10 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   export nudge). Worked as **M2** (analysis: three fields + optional dialogue) and
   **M6** (task-redesign: segmented before/after + six-question checklist). Reading
   columns stay static Astro so the remaining modules are easy to author.
-- [ ] P4 — M8 before/after inquiry (reuses M0 ratings; overlay radar).
+- [x] **P4 — M8 before/after inquiry:** the payoff. An overlay radar (dashed M0
+  baseline + a solid "now" polygon that grows live as you re-rate the eight items),
+  a running summary (moved X of 8 + biggest shift), and the inquiry workbench
+  (reuses the P3 template). M0→M8 threading is real: one stored ratings object.
 - [ ] P5 — Portfolio + PDF export.
 - [ ] P6 — Framework map (coverage matrix fed by "Map it" evidence).
 - [ ] P7 — Author the remaining modules (M1, M3–M5, M7).

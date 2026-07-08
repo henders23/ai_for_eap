@@ -1,0 +1,203 @@
+/* ============================================================================
+   M8 — before/after inquiry. Overlay radar + retake dot-rows + summary.
+   Values transcribed from the design handoff (M8 Inquiry).
+   ============================================================================ */
+
+.m8-intro {
+  padding: clamp(40px, 6vw, 68px) 0 8px;
+}
+.m8-intro h1 {
+  margin: 14px 0 0;
+  font-size: clamp(38px, 5.4vw, 62px);
+  line-height: 1.02;
+  letter-spacing: var(--ls-hero);
+  text-wrap: balance;
+  max-width: 16ch;
+}
+.m8-intro .lead {
+  margin: 22px 0 0;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  line-height: var(--lh-body);
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+/* ---- Before/after payoff card ---- */
+.m8-payoff-section { padding: 28px 0 20px; }
+.m8-payoff {
+  background: var(--card);
+  border: 1px solid var(--line-10);
+  border-radius: 22px;
+  padding: clamp(22px, 3.2vw, 40px);
+}
+.m8-payoff-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+  align-items: flex-start;
+}
+.m8-radar-col {
+  flex: 1 1 360px;
+  min-width: 320px;
+}
+.m8-radar-col .kicker {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+.m8-radar-svg {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin-top: 8px;
+  overflow: visible;
+}
+.m8-now-poly { transition: all 0.3s ease; }
+.m8-legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 6px;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.m8-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.m8-legend .swatch-base {
+  width: 16px;
+  height: 0;
+  border-top: 2px dashed var(--blue);
+}
+.m8-legend .swatch-now {
+  width: 16px;
+  height: 3px;
+  background: var(--terra);
+  border-radius: 2px;
+}
+
+/* ---- Retake + summary ---- */
+.m8-retake-col {
+  flex: 1.1 1 360px;
+  min-width: 320px;
+}
+.m8-summary {
+  background: var(--tint);
+  border: 1px solid rgba(192, 106, 66, 0.3);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.m8-summary .moved {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.m8-summary .mover {
+  margin: 8px 0 0;
+  font-family: var(--font-ui);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.m8-retake-label {
+  margin: 20px 0 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+.m8-retake-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.m8-retake-item .head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.m8-retake-item .num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--numeral);
+}
+.m8-retake-item .short {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.m8-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.m8-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  border: 1.5px solid rgba(43, 38, 32, 0.22);
+  transition: background 0.14s ease, border-color 0.14s ease, transform 0.1s ease;
+}
+.m8-dot:hover {
+  border-color: rgba(192, 106, 66, 0.6);
+  background: rgba(192, 106, 66, 0.08);
+}
+.m8-dot.on {
+  background: var(--terra);
+  border-color: var(--terra);
+}
+.m8-dot.on:hover {
+  background: var(--terra-deep);
+  border-color: var(--terra-deep);
+}
+.m8-dot:active { transform: scale(0.94); }
+.m8-dot:focus-visible { outline: var(--focus); outline-offset: 2px; }
+
+/* ---- Inquiry section (reuses workspace layout) ---- */
+.m8-inquiry-section { padding: 40px 0 100px; }
+.m8-inquiry-rule {
+  border-top: 1px solid var(--line-14);
+  padding-top: 40px;
+}
+.m8-inquiry-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+.m8-inquiry-reading {
+  flex: 1.25 1 380px;
+  min-width: 320px;
+}
+.m8-inquiry-reading h2 {
+  margin: 0;
+  font-size: clamp(26px, 3.4vw, 36px);
+  letter-spacing: -0.015em;
+}
+.m8-inquiry-reading .standfirst {
+  margin: 18px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--blue);
+  max-width: 44ch;
+}

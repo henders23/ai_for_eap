@@ -1,0 +1,120 @@
+---
+/**
+ * M8 — A small inquiry (the closing module and payoff). Two parts:
+ *  1. Before/after radar overlay + retake of the eight items (BeforeAfter island).
+ *  2. The inquiry workbench (reuses ModuleWorkbench — analysis shape).
+ */
+import Base from '../../layouts/Base.astro';
+import BeforeAfter from '../../components/BeforeAfter.tsx';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import type { WorkbenchConfig } from '../../components/ModuleWorkbench';
+import { MODULES } from '../../lib/modules';
+import '../../styles/workspace.css';
+import '../../styles/m8.css';
+
+const m = MODULES.find((x) => x.slug === 'inquiry')!;
+
+const inquiry: WorkbenchConfig = {
+  moduleId: m.num,
+  mapIt: { teap: m.mapping!.teap, unesco: m.mapping!.unesco },
+  artefact: {
+    kind: 'analysis',
+    label: 'Artefact · your inquiry',
+    fields: [
+      {
+        id: 'question',
+        label: 'My one question',
+        placeholder:
+          'Does drafting with AI before class change how my students revise afterwards?',
+      },
+      {
+        id: 'noticed',
+        label: 'What I noticed',
+        placeholder:
+          'Weaker students leant on it whole; stronger ones argued with it. Revision talk got sharper for the second group.',
+      },
+      {
+        id: 'change',
+        label: 'What I’ll change next',
+        placeholder: 'Teach the “argue with it” move explicitly, before anyone drafts…',
+        dashed: true,
+      },
+    ],
+  },
+  journalPlaceholder:
+    'Eight modules ago I’d have called this cheating. Now I can say exactly when it is and when it isn’t.',
+  exportTitle: 'You’ve finished the resource.',
+  exportBody:
+    'Baseline, artefacts, inquiry, and your before-and-after shape — all in your portfolio.',
+  exportLinkLabel: 'See your portfolio →',
+};
+---
+
+<Base
+  title={m.title}
+  description="Retake the eight-item audit, see how far you’ve moved, and write up a small classroom inquiry."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <!-- module header -->
+    <section class="m8-intro">
+      <a class="ws-back" href="/modules">← All modules</a>
+      <div class="ws-meta">
+        <span class="mod-label">Module 8 · the last one</span>
+        <span class="dot"></span>
+        <span class="mod-duration">{m.duration}</span>
+      </div>
+      <h1>See how far you’ve moved.</h1>
+      <p class="lead">
+        You started with a shape. Rate the same eight things again — honestly, as
+        you feel today — and watch it grow over your baseline. Then write up the
+        small classroom inquiry that got you here.
+      </p>
+    </section>
+
+    <!-- before / after payoff -->
+    <section class="m8-payoff-section">
+      <div class="m8-payoff">
+        <BeforeAfter client:load />
+      </div>
+    </section>
+
+    <!-- inquiry workbench -->
+    <section class="m8-inquiry-section">
+      <div class="m8-inquiry-rule">
+        <div class="m8-inquiry-cols">
+          <div class="m8-inquiry-reading">
+            <h2>Write up your small inquiry</h2>
+            <p class="standfirst">
+              Not a research project. One question, one class, one honest look at
+              what happened.
+            </p>
+            <div class="ws-prose">
+              <p>
+                Somewhere across these modules you tried something — a redesigned
+                task, a different conversation, a new way of reading a text with
+                students. This is where you make sense of it, in the same voice
+                you’d use with a trusted colleague.
+              </p>
+              <p>
+                Keep it small and true. The point isn’t a finding that would
+                survive peer review; it’s that you looked, on purpose, and can say
+                what you saw. That’s the disposition the whole resource has been
+                building toward.
+              </p>
+            </div>
+            <div class="pull-quote">
+              <p>
+                “I stopped policing and started designing. The AI ‘tells’ I used to
+                hunt for turned out to be the wrong thing to look at.”
+              </p>
+              <p>A peer-level example — one paragraph, honestly told. Yours can be shorter.</p>
+            </div>
+          </div>
+
+          <ModuleWorkbench client:load config={inquiry} />
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
