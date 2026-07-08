@@ -1,0 +1,75 @@
+---
+/**
+ * References — a working bibliography for a module, rendered at the foot of the
+ * reading column. Real, canonical sources; the note keeps scholarly honesty.
+ */
+import { referencesFor } from '../lib/references';
+
+interface Props {
+  module: string;
+  /** Optional heading override. */
+  title?: string;
+}
+const { module, title = 'References & further reading' } = Astro.props;
+const refs = referencesFor(module);
+---
+
+{
+  refs.length > 0 && (
+    <aside class="ws-references" aria-label="References and further reading">
+      <h2 class="ws-ref-title">{title}</h2>
+      <ol class="ws-ref-list">
+        {refs.map((r) => (
+          <li set:html={r.html} />
+        ))}
+      </ol>
+      <p class="ws-ref-note">
+        A working bibliography — verify editions, volumes and page references
+        against source before formal use.
+      </p>
+    </aside>
+  )
+}
+
+<style>
+  .ws-references {
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-14);
+    max-width: 62ch;
+  }
+  .ws-ref-title {
+    margin: 0 0 14px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ws-ref-list {
+    margin: 0;
+    padding-left: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+  .ws-ref-list li {
+    font-family: var(--font-ui);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-body);
+  }
+  .ws-ref-list li::marker {
+    color: var(--numeral);
+    font-variant-numeric: tabular-nums;
+  }
+  .ws-ref-note {
+    margin: 16px 0 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted-3);
+  }
+</style>

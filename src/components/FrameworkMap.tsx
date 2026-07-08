@@ -105,29 +105,47 @@ export default function FrameworkMap() {
                       </span>
                     ))}
                   </div>
-                  {f.areas.map((a) => (
-                    <div class="fm-grid fm-row" key={a.label}>
-                      <span class="fm-area-label">
-                        <span class={`fm-tick${a.evidenced ? ' on' : ''}`}>
-                          {a.evidenced ? '✓' : ''}
-                        </span>
-                        {a.label}
-                      </span>
-                      {a.cells.map((state, i) => (
-                        <span class="fm-cell" key={i}>
+                  {f.areas.map((a) => {
+                    const yes = matrix.moduleCols
+                      .filter((c, i) => a.cells[i] === 'yes')
+                      .map((c) => c.label);
+                    const plan = matrix.moduleCols
+                      .filter((c, i) => a.cells[i] === 'plan')
+                      .map((c) => c.label);
+                    const summary =
+                      `${a.label}: ` +
+                      (a.evidenced
+                        ? `evidenced by ${yes.join(', ')}`
+                        : 'not yet evidenced') +
+                      (plan.length ? `; planned in ${plan.join(', ')}.` : '.');
+                    return (
+                      <div class="fm-grid fm-row" key={a.label}>
+                        <span class="fm-area-label">
                           <span
-                            class={
-                              state === 'yes'
-                                ? 'fm-dot-yes'
-                                : state === 'plan'
-                                  ? 'fm-dot-plan'
-                                  : 'fm-dot-na'
-                            }
-                          />
+                            class={`fm-tick${a.evidenced ? ' on' : ''}`}
+                            aria-hidden="true"
+                          >
+                            {a.evidenced ? '✓' : ''}
+                          </span>
+                          {a.label}
+                          <span class="sr-only">{summary}</span>
                         </span>
-                      ))}
-                    </div>
-                  ))}
+                        {a.cells.map((state, i) => (
+                          <span class="fm-cell" key={i} aria-hidden="true">
+                            <span
+                              class={
+                                state === 'yes'
+                                  ? 'fm-dot-yes'
+                                  : state === 'plan'
+                                    ? 'fm-dot-plan'
+                                    : 'fm-dot-na'
+                              }
+                            />
+                          </span>
+                        ))}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}

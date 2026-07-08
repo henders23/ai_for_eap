@@ -71,7 +71,12 @@ export default function BeforeAfter() {
       {/* ---- overlay radar ---- */}
       <div class="m8-radar-col">
         <span class="kicker">Before &amp; after</span>
-        <svg viewBox="0 0 400 380" class="m8-radar-svg">
+        <svg
+          viewBox="0 0 400 380"
+          class="m8-radar-svg"
+          role="img"
+          aria-label="Before-and-after radar: your Module 0 baseline shape (dashed) with your current M8 ratings (solid) laid over it."
+        >
           {nowGeo.rings.map((ring, i) => (
             <polygon
               key={`ring${i}`}

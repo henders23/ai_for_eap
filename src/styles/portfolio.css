@@ -86,7 +86,7 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 15px;
-  color: var(--terra);
+  color: var(--terra-deep);
 }
 .pf-entry-num--blue { color: var(--blue); }
 .pf-entry-head h2 {

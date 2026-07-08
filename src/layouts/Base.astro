@@ -53,8 +53,9 @@ const fullTitle =
     />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     {header !== 'none' && <Header variant={header} />}
-    <main style={maxWidth ? `max-width:${maxWidth};margin:0 auto;` : undefined}>
+    <main id="main" style={maxWidth ? `max-width:${maxWidth};margin:0 auto;` : undefined}>
       <slot />
     </main>
   </body>

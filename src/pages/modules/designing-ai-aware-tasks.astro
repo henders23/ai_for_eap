@@ -6,6 +6,7 @@
 import Base from '../../layouts/Base.astro';
 import ModuleHeader from '../../components/ModuleHeader.astro';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import References from '../../components/References.astro';
 import { MODULES } from '../../lib/modules';
 import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
@@ -34,8 +35,9 @@ const config = buildWorkbenchConfig(m.num);
             <p>
               The panic move is to forbid AI and police the result. It rarely
               works, it corrodes trust, and it puts you in an arms race you can’t
-              win. The calmer move is older than AI: design the task so that doing
-              the thinking is the only way through it.
+              win. The calmer move is older than AI, and it is just constructive
+              alignment (Biggs &amp; Tang, 2011): design the task so that doing the
+              thinking is the only way through it.
             </p>
             <p>
               Take a task you already set. Find where a model walks straight
@@ -57,6 +59,7 @@ const config = buildWorkbenchConfig(m.num);
             </p>
             <p>— a foundation-year tutor, after one redesign</p>
           </div>
+          <References module="M6" />
         </div>
 
         <!-- workbench rail (island) -->

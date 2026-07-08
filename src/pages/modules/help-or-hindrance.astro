@@ -3,6 +3,7 @@
 import Base from '../../layouts/Base.astro';
 import ModuleHeader from '../../components/ModuleHeader.astro';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import References from '../../components/References.astro';
 import { MODULES } from '../../lib/modules';
 import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
@@ -32,11 +33,12 @@ const config = buildWorkbenchConfig(m.num);
               The difference isn’t in the tool; it’s in what the task was for.
             </p>
             <p>
-              A useful test comes from how learning works: if the effort you’re
-              removing is the effort that builds the capability, you’ve hollowed the
-              task out. If it’s incidental friction, you’ve helped. Summarising a text
-              in order to learn to summarise — don’t remove it. Formatting a reference
-              list — remove it gladly.
+              A useful test comes from how learning works. Some effort is a
+              <em>desirable difficulty</em> — the struggle that actually builds the
+              capability (Bjork &amp; Bjork, 2011); remove it and you hollow the task
+              out. Other effort is incidental friction, and clearing it helps.
+              Summarising a text in order to learn to summarise — don’t remove it.
+              Formatting a reference list — remove it gladly.
             </p>
             <p>
               Take one activity you set and hold it against that test. Name what the
@@ -48,6 +50,7 @@ const config = buildWorkbenchConfig(m.num);
             <p>“Ask not ‘is AI allowed?’ but ‘if a model did this, what would the student have failed to learn?’”</p>
             <p>The test this module turns into an artefact.</p>
           </div>
+          <References module="M4" />
         </div>
         <ModuleWorkbench client:load config={config} />
       </div>

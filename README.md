@@ -117,8 +117,21 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   All nine modules are now live and deep-linked. Exposed and fixed a gap: the
   portfolio and framework map now count evidence from *every* content module, not
   just M2/M6/M8. **Prose is draft — subject-expert review welcome.**
-- [ ] P8 — Citation pass: finalise the crosswalk cell assignments against source.
-- [ ] P9 — Accessibility + responsive audit + deploy.
+- [x] **Academic apparatus:** real, canonical references woven through every module
+  (inline citations + a per-module working bibliography via `lib/references.ts` +
+  `References.astro`), plus a portfolio-throughline orientation on the home page and
+  self-audit intro so users grasp the arc early. **Bibliography is a working list —
+  verify editions/pages against source.**
+- [x] **P9 — Accessibility + responsive:** WCAG AA contrast (darkened the muted /
+  numeral tokens that failed on paper — documented in `tokens.css`), skip-to-content
+  link, `role="img"` + labels on the radar charts, screen-reader summaries for the
+  coverage matrix (decorative cells `aria-hidden`), heading order, larger nav tap
+  targets. Verified no horizontal overflow at 375/768/1280 and that the matrix
+  scrolls inside its own container (23/23 automated checks).
+- [x] **Deployed to Vercel** (static output; no adapter needed).
+- [ ] P8 — Citation pass: finalise the *crosswalk cell assignments* against source
+  (framework names already source-exact; references now added — this is the mapping
+  verification the subject expert drives).
 
 ## Licence
 

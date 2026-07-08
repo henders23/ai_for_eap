@@ -155,8 +155,8 @@ export default function SelfAudit() {
             <div class="rule" style={{ marginTop: '30px' }} />
             <p class="audit-lead intro-lead-lg">
               Two minutes, a few taps, no wrong answers. This just helps the
-              resource meet you where you are — and gives you a starting point to
-              look back on.
+              resource meet you where you are — and becomes the first entry in a
+              portfolio you build as you go, and can export to PDF.
             </p>
             <p class="intro-aside">
               You’ll retake it at the end and see how far you’ve moved.
@@ -400,7 +400,12 @@ export default function SelfAudit() {
                   A shape to revisit, not a score. You’ll draw it again at the end
                   and lay the two over each other.
                 </p>
-                <svg viewBox="0 0 420 400" class="radar-svg">
+                <svg
+                  viewBox="0 0 420 400"
+                  class="radar-svg"
+                  role="img"
+                  aria-label="Radar chart of your eight confidence ratings — one axis per can-do statement, further out means more confident."
+                >
                   {rd.rings.map((ring, i) => (
                     <polygon
                       key={`ring${i}`}

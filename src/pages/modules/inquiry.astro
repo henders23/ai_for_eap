@@ -7,6 +7,7 @@
 import Base from '../../layouts/Base.astro';
 import BeforeAfter from '../../components/BeforeAfter.tsx';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import References from '../../components/References.astro';
 import { MODULES } from '../../lib/modules';
 import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
@@ -65,8 +66,8 @@ const inquiry = buildWorkbenchConfig(m.num);
               <p>
                 Keep it small and true. The point isn’t a finding that would
                 survive peer review; it’s that you looked, on purpose, and can say
-                what you saw. That’s the disposition the whole resource has been
-                building toward.
+                what you saw — reflection-in-action, in Schön’s (1983) phrase. That’s
+                the disposition the whole resource has been building toward.
               </p>
             </div>
             <div class="pull-quote">
@@ -76,6 +77,7 @@ const inquiry = buildWorkbenchConfig(m.num);
               </p>
               <p>A peer-level example — one paragraph, honestly told. Yours can be shorter.</p>
             </div>
+            <References module="M8" />
           </div>
 
           <ModuleWorkbench client:load config={inquiry} />

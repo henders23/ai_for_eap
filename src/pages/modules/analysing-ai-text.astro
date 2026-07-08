@@ -6,6 +6,7 @@
 import Base from '../../layouts/Base.astro';
 import ModuleHeader from '../../components/ModuleHeader.astro';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import References from '../../components/References.astro';
 import { MODULES } from '../../lib/modules';
 import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
@@ -33,10 +34,11 @@ const config = buildWorkbenchConfig(m.num);
           <div class="ws-prose">
             <p>
               You already have the instrument for this. Every time you teach a
-              student to notice moves, hedges, and the difference between a claim
-              and its warrant, you are doing exactly what you need to read
-              machine-written prose critically. The machine is fluent. It is often
-              not <em>saying</em> anything.
+              student to notice rhetorical moves, hedges, and the difference between
+              a claim and its warrant — the analytic habits of genre and discourse
+              (Swales, 1990; Hyland, 2006) — you are doing exactly what you need to
+              read machine-written prose critically. The machine is fluent. It is
+              often not <em>saying</em> anything.
             </p>
             <p>
               Below is an AI-written abstract. Read it once for register, then
@@ -64,6 +66,7 @@ const config = buildWorkbenchConfig(m.num);
             citation you’d want to verify, and you’ve produced your first M2
             artefact.
           </p>
+          <References module="M2" />
         </div>
 
         <!-- workbench rail (island) -->

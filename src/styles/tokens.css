@@ -17,14 +17,17 @@
   --ink: #2B2620;          /* primary text */
   --ink-body: #3F3A31;     /* body / reading */
   --ink-soft: #544C3E;     /* body / reading (softer) */
-  --muted: #6B6353;        /* muted text */
-  --muted-2: #8A8272;
-  --muted-3: #9A9282;
+  /* Muted text tiers — darkened from the handoff to meet WCAG AA (≥4.5:1 on
+     paper) while preserving the light→dark order. Original design values were
+     #6B6353 / #8A8272 / #9A9282; the two lightest failed AA for body text. */
+  --muted: #6B6353;        /* muted text (5.33:1) */
+  --muted-2: #6F6A5A;      /* was #8A8272 (4.85:1) */
+  --muted-3: #736E5D;      /* was #9A9282 (4.57:1) */
 
   /* ---- Colour: terracotta (primary accent) ---- */
-  --terra: #C06A42;
-  --terra-deep: #A9542F;   /* hover / active-text */
-  --terra-eyebrow: #B0562F;
+  --terra: #C06A42;        /* large text / fills only (3.5:1) */
+  --terra-deep: #A9542F;   /* hover / active-text; AA for small text (4.71:1) */
+  --terra-eyebrow: #A9542F; /* was #B0562F; AA-compliant for small eyebrow labels */
 
   /* ---- Colour: ink-blue (secondary accent) ---- */
   --blue: #4A6B78;
@@ -33,7 +36,7 @@
 
   /* ---- Colour: status + accents ---- */
   --green: #3F6B54;        /* done / redesigned / success */
-  --numeral: #B99A6B;      /* index numeral accent */
+  --numeral: #80692F;      /* index numeral accent; was #B99A6B (AA: 4.73:1) */
 
   /* ---- Colour: dark surfaces (toast, nudge, popover) ---- */
   --dark: #2B2620;

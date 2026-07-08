@@ -114,6 +114,29 @@ svg {
   }
 }
 
+/* Skip-to-content link — visible only when focused. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--terra);
+  color: var(--on-terra);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 0 0 10px 10px;
+  transition: top 0.16s ease;
+}
+.skip-link:focus {
+  top: 0;
+  color: var(--on-terra);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
 /* Screen-reader-only helper for accessible labels. */
 .sr-only {
   position: absolute;
