@@ -1,62 +1,17 @@
 ---
 /**
- * Framework map — placeholder until P6. The full coverage matrix (TEAP × UNESCO)
- * is fed by "Map it" evidence from the module workspaces, which come first.
+ * Framework map — the TEAP × UNESCO coverage matrix, fed by kept-artefact
+ * evidence via the FrameworkMap island.
  */
 import Base from '../layouts/Base.astro';
+import FrameworkMap from '../components/FrameworkMap.tsx';
+import '../styles/framework-map.css';
 ---
 
 <Base
   title="Framework map"
-  description="How this resource maps to the UNESCO AI competency framework and the BALEAP TEAP criteria."
+  description="How your kept work maps onto the UNESCO AI competency framework and the BALEAP TEAP criteria — a coverage matrix fed by each module's Map it tag."
+  maxWidth="none"
 >
-  <section class="placeholder">
-    <span class="eyebrow">Coming soon</span>
-    <h1>The framework map</h1>
-    <div class="rule"></div>
-    <p>
-      This will show how your kept work maps onto the UNESCO AI Competency
-      Framework for Teachers and the BALEAP TEAP criteria — a coverage matrix fed
-      by the “Map it” tags in each module. It arrives once the module workspaces
-      are in place.
-    </p>
-    <p class="fine">
-      Framework names and codes are drawn source-exact from UNESCO (2024) and
-      BALEAP (2024). The module-to-competency crosswalk is this resource’s own
-      interpretive mapping, not an official statement by either body.
-    </p>
-    <a class="btn" href="/modules">Browse the modules →</a>
-  </section>
+  <FrameworkMap client:load />
 </Base>
-
-<style>
-  .placeholder {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: clamp(64px, 10vw, 120px) var(--gutter) 120px;
-  }
-  .placeholder h1 {
-    margin: 18px 0 0;
-    font-size: clamp(36px, 5vw, 56px);
-    letter-spacing: var(--ls-hero);
-    line-height: 1.03;
-  }
-  .placeholder .rule { margin-top: 26px; }
-  .placeholder p {
-    margin: 24px 0 0;
-    font-family: var(--font-ui);
-    font-size: 18px;
-    line-height: var(--lh-body);
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-  .placeholder p.fine {
-    font-size: 14px;
-    color: var(--muted-2);
-    max-width: 56ch;
-  }
-  .placeholder .btn {
-    text-decoration: none;
-    margin-top: 40px;
-  }
-</style>

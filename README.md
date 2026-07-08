@@ -105,7 +105,12 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   artefacts, and "Export to PDF" (`window.print()` with an `@media print` sheet
   that hides nav/controls). Per-module artefact content is now centralized in
   `lib/module-content.ts` — one source for the workbench pages and the portfolio.
-- [ ] P6 — Framework map (coverage matrix fed by "Map it" evidence).
+- [x] **P6 — Framework map:** the TEAP × UNESCO coverage matrix every "Map it"
+  feeds. Rows are source-exact (BALEAP's four areas + UNESCO's five aspects); cells
+  are solid (evidenced by a kept artefact), dashed (comes in a later module) or
+  faint (n/a), driven by the same kept-artefact evidence as the portfolio. Coverage
+  summary + per-framework bars + the honest draft-crosswalk caveat. The structured
+  module→area crosswalk lives once in `lib/coverage.ts`.
 - [ ] P7 — Author the remaining modules (M1, M3–M5, M7).
 - [ ] P8 — Citation pass: finalise the crosswalk cell assignments against source.
 - [ ] P9 — Accessibility + responsive audit + deploy.

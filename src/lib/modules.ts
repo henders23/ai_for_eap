@@ -10,23 +10,20 @@
    ============================================================================ */
 
 export type ModuleKind = 'done' | 'baseline' | 'todo';
-export type UnescoLevel = 'Acquire' | 'Deepen' | 'Create';
 
 export interface MapLine {
   framework: string;
   detail: string;
 }
 
-/** The module→framework crosswalk. NAMES/CODES are source-exact; which module
+/** The "Map it" popover display lines. NAMES are source-exact; which module
  *  evidences which area is THIS RESOURCE'S OWN interpretive mapping — shown with
- *  a "draft — to be verified" caveat, never as an official statement. */
+ *  a "draft — to be verified" caveat, never as an official statement. The
+ *  structured module→area crosswalk that drives the Framework map lives in
+ *  lib/coverage.ts (single source). */
 export interface ModuleMapping {
-  /** Display lines for the "Map it" popover (verbatim from the design). */
   teap: MapLine;
   unesco: MapLine;
-  /** Structured ids for the Framework-map coverage matrix (P6). */
-  baleapAreas: string[]; // ids from BALEAP_AREAS
-  unescoBlocks: { aspect: number; level: UnescoLevel }[];
 }
 
 export interface ModuleDef {
@@ -106,11 +103,6 @@ export const MODULES: ModuleDef[] = [
     mapping: {
       teap: { framework: 'TEAP', detail: 'analysing texts & selecting materials' },
       unesco: { framework: 'UNESCO AI competency', detail: 'critical understanding of AI' },
-      baleapAreas: ['planning', 'teaching'],
-      unescoBlocks: [
-        { aspect: 1, level: 'Acquire' }, // Human agency (critical understanding)
-        { aspect: 3, level: 'Acquire' }, // Basic AI techniques and applications
-      ],
     },
   },
   {
@@ -172,10 +164,6 @@ export const MODULES: ModuleDef[] = [
     mapping: {
       teap: { framework: 'TEAP', detail: 'course & task design; assessment' },
       unesco: { framework: 'UNESCO AI competency', detail: 'AI pedagogy' },
-      baleapAreas: ['planning', 'assessment'],
-      unescoBlocks: [
-        { aspect: 4, level: 'Deepen' }, // AI–pedagogy integration
-      ],
     },
   },
   {
@@ -210,11 +198,6 @@ export const MODULES: ModuleDef[] = [
     mapping: {
       teap: { framework: 'TEAP', detail: 'reflection & professional development' },
       unesco: { framework: 'UNESCO AI competency', detail: 'pedagogy & professional engagement' },
-      baleapAreas: ['scholarship', 'teaching'],
-      unescoBlocks: [
-        { aspect: 4, level: 'Deepen' }, // AI–pedagogy integration
-        { aspect: 5, level: 'Deepen' }, // AI to enhance organizational learning
-      ],
     },
   },
 ];
