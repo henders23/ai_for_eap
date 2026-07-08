@@ -1,0 +1,64 @@
+---
+/** M3 — Where AI fits. (Draft content for review.) */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'where-ai-fits')!;
+const config = buildWorkbenchConfig(m.num);
+---
+
+<Base
+  title={m.title}
+  description="Locate AI inside the professional frameworks you already work within — BALEAP TEAP and the UNESCO AI competency framework."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 3" duration={m.duration!} title="Where AI fits" />
+    <section class="ws-body">
+      <div class="ws-cols">
+        <div class="ws-reading">
+          <p class="standfirst">
+            Not a new subject to bolt on. A lens to hold over the professional
+            development you already do.
+          </p>
+          <div class="ws-prose">
+            <p>
+              AI in teaching can feel like one more thing — a separate literacy, a
+              separate policy, a separate panic. It’s calmer, and more accurate, to
+              locate it inside frameworks you already work within.
+            </p>
+            <p>
+              Two are worth knowing by name. The <strong>BALEAP TEAP competencies</strong>
+              describe what an EAP practitioner does well; the <strong>UNESCO AI
+              Competency Framework for Teachers</strong> describes what using AI well
+              looks like, across five aspects and three levels. Neither was written
+              with the other in mind — which is exactly why mapping your own practice
+              across both is worth doing.
+            </p>
+            <p>
+              This module asks you to place yourself: which parts of your practice
+              already touch AI, which framework areas that evidences, and where you’d
+              like to grow. The “Map it” tags across the resource assemble that
+              picture for you.
+            </p>
+          </div>
+          <figure class="specimen" style="padding:22px 24px;">
+            <figcaption>The two frameworks · for reference</figcaption>
+            <p style="font-family:var(--font-ui);font-size:14.5px;line-height:1.6;color:var(--ink-body);">
+              UNESCO (2024). <em>AI competency framework for teachers.</em> Paris:
+              UNESCO.<br />
+              BALEAP (2024). <em>TEAP Individual Accreditation Scheme Handbook</em>;
+              underlying BALEAP (2008), <em>Competency Framework for Teachers of
+              EAP.</em>
+            </p>
+          </figure>
+        </div>
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

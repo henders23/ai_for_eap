@@ -1,0 +1,57 @@
+---
+/** M1 — How AI generates text. (Draft content for review.) */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'how-ai-generates-text')!;
+const config = buildWorkbenchConfig(m.num);
+---
+
+<Base
+  title={m.title}
+  description="A plain account of how large language models predict text — and why they invent sources with such confidence."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 1" duration={m.duration!} title="How AI generates text" />
+    <section class="ws-body">
+      <div class="ws-cols">
+        <div class="ws-reading">
+          <p class="standfirst">
+            It predicts the next word. Understanding that one fact changes how you
+            read everything it produces.
+          </p>
+          <div class="ws-prose">
+            <p>
+              A large language model does not know things. It predicts — token by
+              token — the most likely continuation of the text so far, learned from
+              a vast sweep of human writing. That is the whole trick, and it is
+              enough to produce prose that is fluent, plausible, and, often, wrong.
+            </p>
+            <p>
+              Fluency is not truth. Because the model optimises for what <em>sounds</em>
+              right, it will produce a confident citation, a clean statistic, a tidy
+              quotation — whether or not any of them exist. The invented reference
+              isn’t a bug it will grow out of; it’s the same mechanism that makes the
+              good sentences good.
+            </p>
+            <p>
+              You don’t need the mathematics. You need the disposition: treat every
+              factual claim as unverified until you’ve checked it, and teach your
+              students to do the same.
+            </p>
+          </div>
+          <div class="pull-quote">
+            <p>“It isn’t lying. It has no notion of true. It is finishing your sentence — very well.”</p>
+            <p>The one idea this module is built around.</p>
+          </div>
+        </div>
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

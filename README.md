@@ -111,7 +111,12 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   faint (n/a), driven by the same kept-artefact evidence as the portfolio. Coverage
   summary + per-framework bars + the honest draft-crosswalk caveat. The structured
   module→area crosswalk lives once in `lib/coverage.ts`.
-- [ ] P7 — Author the remaining modules (M1, M3–M5, M7).
+- [x] **P7 — Remaining modules (draft):** M1 (how AI generates text), M3 (where AI
+  fits), M4 (help or hindrance), M5 (authorship & integrity), M7 (detection, bias &
+  equity) — reading columns + artefact prompts authored on the existing template.
+  All nine modules are now live and deep-linked. Exposed and fixed a gap: the
+  portfolio and framework map now count evidence from *every* content module, not
+  just M2/M6/M8. **Prose is draft — subject-expert review welcome.**
 - [ ] P8 — Citation pass: finalise the crosswalk cell assignments against source.
 - [ ] P9 — Accessibility + responsive audit + deploy.
 

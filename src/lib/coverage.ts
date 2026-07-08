@@ -23,7 +23,7 @@ export interface ModuleCoverage {
 /** Draft crosswalk for all nine modules (M0–M8). */
 export const MODULE_COVERAGE: Record<string, ModuleCoverage> = {
   M0: { baleap: ['scholarship'], unesco: [5] },
-  M1: { baleap: [], unesco: [3] },
+  M1: { baleap: ['scholarship'], unesco: [3] },
   M2: { baleap: ['planning', 'teaching'], unesco: [1, 3] },
   M3: { baleap: ['scholarship'], unesco: [5] },
   M4: { baleap: ['teaching'], unesco: [4] },

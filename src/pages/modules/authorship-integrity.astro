@@ -1,0 +1,56 @@
+---
+/** M5 — Authorship & integrity. (Draft content for review.) */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'authorship-integrity')!;
+const config = buildWorkbenchConfig(m.num);
+---
+
+<Base
+  title={m.title}
+  description="Find a clear, defensible position of your own for talking with students about AI, authorship and integrity."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 5" duration={m.duration!} title="Authorship & integrity" />
+    <section class="ws-body">
+      <div class="ws-cols">
+        <div class="ws-reading">
+          <p class="standfirst">
+            You can’t hold a clear line with students until you’ve drawn one for
+            yourself.
+          </p>
+          <div class="ws-prose">
+            <p>
+              Integrity conversations go badly when the teacher’s own position is
+              unsettled. “AI is cheating” collapses the moment a student asks about
+              spell-check, a reference manager, or a translation tool they’ve always
+              used. A defensible position is more specific, and more honest.
+            </p>
+            <p>
+              The stronger ground is <em>authorship</em>: whose thinking is on the
+              page, and can the student stand behind it? That reframes the
+              conversation from detection and suspicion to ownership and process —
+              which is where EAP has always been strong.
+            </p>
+            <p>
+              Write the position you could actually say aloud to a class: what’s
+              fine, what’s not, and why. Not a policy document — a sentence or two
+              you believe.
+            </p>
+          </div>
+          <div class="pull-quote">
+            <p>“I stopped asking ‘did you use AI?’ and started asking ‘can you stand behind this?’ The room changed.”</p>
+            <p>— a writing-centre adviser</p>
+          </div>
+        </div>
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

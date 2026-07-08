@@ -1,0 +1,56 @@
+---
+/** M4 — Help, or hindrance? (Draft content for review.) */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'help-or-hindrance')!;
+const config = buildWorkbenchConfig(m.num);
+---
+
+<Base
+  title={m.title}
+  description="Judge, from how learning works, when AI supports learning and when it quietly removes it."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 4" duration={m.duration!} title="Help, or hindrance?" />
+    <section class="ws-body">
+      <div class="ws-cols">
+        <div class="ws-reading">
+          <p class="standfirst">
+            The question isn’t whether AI is good or bad. It’s whether, this time,
+            it does the learning for the student.
+          </p>
+          <div class="ws-prose">
+            <p>
+              Some uses of AI clear away busywork so the real thinking can happen.
+              Others quietly remove the very struggle that <em>was</em> the learning.
+              The difference isn’t in the tool; it’s in what the task was for.
+            </p>
+            <p>
+              A useful test comes from how learning works: if the effort you’re
+              removing is the effort that builds the capability, you’ve hollowed the
+              task out. If it’s incidental friction, you’ve helped. Summarising a text
+              in order to learn to summarise — don’t remove it. Formatting a reference
+              list — remove it gladly.
+            </p>
+            <p>
+              Take one activity you set and hold it against that test. Name what the
+              learning actually is, then decide — honestly — where AI helps and where
+              it hollows.
+            </p>
+          </div>
+          <div class="pull-quote">
+            <p>“Ask not ‘is AI allowed?’ but ‘if a model did this, what would the student have failed to learn?’”</p>
+            <p>The test this module turns into an artefact.</p>
+          </div>
+        </div>
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

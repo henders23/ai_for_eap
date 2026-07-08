@@ -1,0 +1,62 @@
+---
+/** M7 — Detection, bias & equity. (Draft content for review.) */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'detection-bias-equity')!;
+const config = buildWorkbenchConfig(m.num);
+---
+
+<Base
+  title={m.title}
+  description="Build an evidence-based case on AI detection, bias and equity for colleagues and managers."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 7" duration={m.duration!} title="Detection, bias & equity" />
+    <section class="ws-body">
+      <div class="ws-cols">
+        <div class="ws-reading">
+          <p class="standfirst">
+            Before you argue about detection, get the evidence straight. It doesn’t
+            sit where you might expect.
+          </p>
+          <div class="ws-prose">
+            <p>
+              AI-detection tools are marketed as a solution and behave like a
+              liability. The evidence is consistent: false positives are common, they
+              fall hardest on second-language writers, and the scores can’t be
+              defended in an appeal. For an EAP practitioner that last point is
+              decisive — you would be disadvantaging exactly the students you serve.
+            </p>
+            <p>
+              The equity case runs deeper than detection. Access to the best tools is
+              uneven; training data under-represents many of your students’ languages
+              and rhetorical traditions; and “sounds like a native speaker” is quietly
+              baked into what these systems reward. Naming that is part of the job.
+            </p>
+            <p>
+              Build the case you could put in front of a colleague or a manager: the
+              claim, the evidence, and the honest caveat. Calm, sourced, and short
+              enough to be read.
+            </p>
+          </div>
+          <figure class="specimen" style="padding:20px 24px;">
+            <figcaption>Starting point · to verify against source</figcaption>
+            <p style="font-family:var(--font-ui);font-size:14.5px;line-height:1.6;color:var(--ink-body);">
+              A widely-cited study found that GPT detectors flag writing by
+              non-native English speakers as AI-generated far more often than writing
+              by native speakers — evidence to check and cite properly before this
+              case goes anywhere formal.
+            </p>
+          </figure>
+        </div>
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

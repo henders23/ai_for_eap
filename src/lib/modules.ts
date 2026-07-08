@@ -80,10 +80,15 @@ export const MODULES: ModuleDef[] = [
     mapBlurb:
       'Explain plainly how models predict text — and why they invent sources with confidence.',
     cta: 'Open module',
-    status: 'Not started',
+    status: 'Ready',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/how-ai-generates-text',
+    duration: '~20 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'subject knowledge & scholarship' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'AI foundations — how AI works' },
+    },
   },
   {
     num: 'M2',
@@ -114,10 +119,15 @@ export const MODULES: ModuleDef[] = [
     mapBlurb:
       'Locate AI in your professional development — through TEAP, UNESCO and other frameworks.',
     cta: 'Open module',
-    status: 'Not started',
+    status: 'Ready',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/where-ai-fits',
+    duration: '~20 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'professional development & scholarship' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'AI for professional development' },
+    },
   },
   {
     num: 'M4',
@@ -128,10 +138,15 @@ export const MODULES: ModuleDef[] = [
     mapBlurb:
       'Judge, from how learning works, when AI supports learning and when it quietly removes it.',
     cta: 'Open module',
-    status: 'Not started',
+    status: 'Ready',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/help-or-hindrance',
+    duration: '~25 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'teaching & learning; student learning' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'AI pedagogy' },
+    },
   },
   {
     num: 'M5',
@@ -142,10 +157,15 @@ export const MODULES: ModuleDef[] = [
     mapBlurb:
       'Find a clear position of your own for talking with students about AI and authorship.',
     cta: 'Open module',
-    status: 'Not started',
+    status: 'Ready',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/authorship-integrity',
+    duration: '~25 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'assessment & academic integrity' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'human-centred mindset & ethics of AI' },
+    },
   },
   {
     num: 'M6',
@@ -175,10 +195,15 @@ export const MODULES: ModuleDef[] = [
     mapBlurb:
       'Build an evidence-based case on detection, bias and equity for colleagues and managers.',
     cta: 'Open module',
-    status: 'Not started',
+    status: 'Ready',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/detection-bias-equity',
+    duration: '~25 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'assessment; equity & inclusion' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'ethics of AI — bias & equity' },
+    },
   },
   {
     num: 'M8',

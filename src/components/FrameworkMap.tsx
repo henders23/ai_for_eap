@@ -12,12 +12,14 @@ import {
   artefactKept,
 } from '../lib/store';
 import { buildMatrix, type CoverageMatrix } from '../lib/coverage';
+import { MODULE_CONTENT } from '../lib/module-content';
 
 function keptSet(): Set<string> {
   const kept = new Set<string>();
   if (Object.keys(loadBaselineRatings()).length > 0) kept.add('M0');
   const store = loadArtefacts();
-  for (const id of ['M2', 'M6', 'M8']) {
+  // Any content-bearing module (M1–M8) can carry evidence once its artefact is kept.
+  for (const id of Object.keys(MODULE_CONTENT)) {
     const a = store[id];
     if (a && artefactKept(a)) kept.add(id);
   }
