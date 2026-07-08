@@ -1,0 +1,81 @@
+---
+/**
+ * Landing (placeholder). The full Library Home is a later milestone (P2);
+ * for now this is a calm holding page whose primary action is the self-audit.
+ */
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="AI for EAP Practitioners">
+  <section class="landing">
+    <span class="eyebrow">AI for EAP Practitioners</span>
+    <h1>Using AI in your teaching, thought through.</h1>
+    <div class="rule"></div>
+    <p class="lead">
+      An open, self-paced resource for university English for Academic Purposes
+      teachers who want to use AI thoughtfully — with the reasoning, the frameworks
+      and the classroom judgement to go with it.
+    </p>
+    <p class="aside">
+      Start by finding where you are. Two minutes, a few taps, no wrong answers.
+    </p>
+    <div class="actions">
+      <a class="btn" href="/self-audit">Take the 2-minute self-audit<span class="trailing">· Module 0</span></a>
+    </div>
+    <p class="license">
+      Free and openly licensed (CC BY 4.0). No account, no tracking — everything you
+      write stays in your browser.
+    </p>
+  </section>
+</Base>
+
+<style>
+  .landing {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(56px, 9vw, 110px) var(--gutter) 120px;
+  }
+  .landing h1 {
+    margin: 20px 0 0;
+    font-size: var(--fs-hero);
+    line-height: 1.0;
+    letter-spacing: var(--ls-hero);
+    text-wrap: balance;
+  }
+  .landing .rule {
+    margin-top: 30px;
+  }
+  .lead {
+    margin: 28px 0 0;
+    font-family: var(--font-ui);
+    font-size: 19px;
+    line-height: var(--lh-body);
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .aside {
+    margin: 18px 0 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18.5px;
+    line-height: 1.5;
+    color: var(--blue);
+    max-width: 46ch;
+  }
+  .actions {
+    margin-top: 44px;
+  }
+  .actions .btn {
+    text-decoration: none;
+    min-height: 56px;
+    font-size: 17px;
+    padding: 16px 30px;
+    border-radius: 14px;
+  }
+  .license {
+    margin-top: 48px;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    color: var(--muted-2);
+  }
+</style>

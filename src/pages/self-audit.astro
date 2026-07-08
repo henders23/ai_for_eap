@@ -1,0 +1,17 @@
+---
+/**
+ * Self-audit flow (Module 0). The island renders its own state-aware minimal
+ * header, so the Base layout uses header="none".
+ */
+import Base from '../layouts/Base.astro';
+import SelfAudit from '../components/SelfAudit.tsx';
+import '../styles/self-audit.css';
+---
+
+<Base
+  title="Self-audit"
+  description="A two-minute, tap-driven check-in to find your starting point with AI in your EAP teaching. No sign-in; everything stays in your browser."
+  header="none"
+>
+  <SelfAudit client:load />
+</Base>

@@ -1,0 +1,101 @@
+/* ============================================================================
+   Design tokens — AI for EAP Practitioners
+   Transcribed from the design handoff (README "Design tokens").
+   Palette intent: warm paper + ink, one warm accent (terracotta),
+   one calm secondary (ink-blue). Never AI-cliché gradients/neon.
+   ============================================================================ */
+
+:root {
+  /* ---- Colour: surfaces ---- */
+  --paper: #F7F2E9;        /* page background */
+  --desk: #E7E1D4;         /* option-comparison canvas background */
+  --card: #FFFDF8;         /* raised card / surface */
+  --panel: #EFE7D6;        /* deeper warm panel */
+  --tint: #FBF1E9;         /* warm tint: artefact box, recommended card, summary */
+
+  /* ---- Colour: ink / text ---- */
+  --ink: #2B2620;          /* primary text */
+  --ink-body: #3F3A31;     /* body / reading */
+  --ink-soft: #544C3E;     /* body / reading (softer) */
+  --muted: #6B6353;        /* muted text */
+  --muted-2: #8A8272;
+  --muted-3: #9A9282;
+
+  /* ---- Colour: terracotta (primary accent) ---- */
+  --terra: #C06A42;
+  --terra-deep: #A9542F;   /* hover / active-text */
+  --terra-eyebrow: #B0562F;
+
+  /* ---- Colour: ink-blue (secondary accent) ---- */
+  --blue: #4A6B78;
+  --link: #3F5E6B;
+  --link-hover: #2B4854;
+
+  /* ---- Colour: status + accents ---- */
+  --green: #3F6B54;        /* done / redesigned / success */
+  --numeral: #B99A6B;      /* index numeral accent */
+
+  /* ---- Colour: dark surfaces (toast, nudge, popover) ---- */
+  --dark: #2B2620;
+  --on-dark: #F3EEE2;
+  --on-dark-2: #F7F2E9;
+  --on-dark-muted: #C0B9A5;
+  --on-dark-warm: #E7C9A8;
+  --on-dark-warm-2: #C79A7E;
+
+  /* ---- Text on light surfaces (button fills) ---- */
+  --on-terra: #FDFBF6;
+
+  /* ---- Hairlines / dividers ---- */
+  --line-10: rgba(43, 38, 32, 0.10);
+  --line-12: rgba(43, 38, 32, 0.12);
+  --line-14: rgba(43, 38, 32, 0.14);
+  --line-16: rgba(43, 38, 32, 0.16);
+  --line-18: rgba(43, 38, 32, 0.18);
+
+  /* ---- Selection ---- */
+  --selection: rgba(192, 106, 66, 0.22);
+
+  /* ---- Typography ---- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Type scale (fluid where the handoff specifies clamp) */
+  --fs-hero: clamp(46px, 6.4vw, 76px);       /* intro H1 */
+  --fs-module-title: clamp(34px, 4.4vw, 50px);
+  --fs-h2: clamp(26px, 3vw, 34px);
+  --fs-body: 17px;
+  --fs-eyebrow: 12px;
+
+  --lh-tight: 1.02;
+  --lh-body: 1.55;
+  --ls-hero: -0.025em;
+  --ls-title: -0.02em;
+  --ls-eyebrow: 0.2em;
+
+  /* ---- Radius ---- */
+  --r-button: 13px;
+  --r-card: 18px;
+  --r-pill: 999px;
+  --r-field: 10px;
+
+  /* ---- Shadow ---- */
+  --sh-card: 0 22px 46px -26px rgba(43, 38, 32, 0.4), 0 1px 0 rgba(43, 38, 32, 0.04);
+  --sh-button: 0 10px 22px -11px rgba(160, 84, 47, 0.8);
+  --sh-button-sm: 0 8px 18px -12px rgba(160, 84, 47, 0.7);
+  --sh-popover: 0 20px 40px -16px rgba(43, 38, 32, 0.7);
+  --sh-hover: 0 18px 34px -24px rgba(43, 38, 32, 0.5);
+
+  /* ---- Spacing & layout ---- */
+  --gutter: clamp(20px, 5vw, 56px);
+  --section-pad-top: clamp(40px, 6vw, 76px);
+
+  /* Content max-widths */
+  --w-reading: 760px;
+  --w-portfolio: 880px;
+  --w-workspace: 1000px;
+  --w-home: 1120px;
+
+  /* ---- Focus ring (shared) ---- */
+  --focus: 2px solid var(--blue);
+}

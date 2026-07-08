@@ -1,0 +1,115 @@
+---
+/**
+ * Sticky top header.
+ *   variant="full"  — wordmark + primary nav (used on every view except the self-audit flow).
+ *   variant="audit" — minimal static wordmark (the self-audit flow renders its own
+ *                     state-aware header inside the island, so it uses header="none").
+ *
+ * Nav targets are the resource's eventual routes; they are wired up as each
+ * section is built. The wordmark always returns home.
+ */
+interface Props {
+  variant?: 'full' | 'audit';
+  active?: string;
+}
+const { variant = 'full', active } = Astro.props;
+
+const nav = [
+  { label: 'Modules', href: '/modules', key: 'modules' },
+  { label: 'Toolkit', href: '/toolkit', key: 'toolkit' },
+  { label: 'Map', href: '/map', key: 'map' },
+  { label: 'Portfolio', href: '/portfolio', key: 'portfolio' },
+];
+---
+
+<header class="site-header" data-noprint>
+  <a class="wordmark" href="/">AI for EAP Practitioners</a>
+
+  {
+    variant === 'full' && (
+      <nav class="site-nav" aria-label="Primary">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link"
+            aria-current={active === item.key ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href="/self-audit" class="nav-audit">Self-audit</a>
+      </nav>
+    )
+  }
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px var(--gutter);
+    background: rgba(247, 242, 233, 0.88);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-bottom: 1px solid var(--line-10);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16.5px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 22px);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav-link {
+    font-family: var(--font-ui);
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 6px 2px;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    color: var(--ink);
+  }
+  .nav-link[aria-current='page'] {
+    color: var(--terra-deep);
+    font-weight: 600;
+  }
+
+  .nav-audit {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--terra-deep);
+    text-decoration: none;
+    border: 1.5px solid var(--terra);
+    border-radius: var(--r-pill);
+    padding: 8px 16px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background 0.16s ease;
+  }
+  .nav-audit:hover {
+    background: rgba(192, 106, 66, 0.08);
+    color: var(--terra-deep);
+  }
+</style>

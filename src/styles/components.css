@@ -1,0 +1,265 @@
+/* ============================================================================
+   Component kit — shared vocabulary (README "Components").
+   Colour is never the only signal: selected states also carry a tick / weight.
+   ============================================================================ */
+
+/* ---- Eyebrow / kicker ---- */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--terra-eyebrow);
+}
+
+/* ---- Primary button ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--r-button);
+  padding: 14px 26px;
+  cursor: pointer;
+  background: var(--terra);
+  color: var(--on-terra);
+  box-shadow: var(--sh-button);
+  transition: transform 0.12s ease, background 0.18s ease;
+}
+.btn:hover {
+  background: var(--terra-deep);
+}
+.btn:active {
+  transform: translateY(1px) scale(0.995);
+}
+.btn:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+}
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+.btn .trailing {
+  opacity: 0.72;
+  font-weight: 400;
+}
+
+/* ---- Outline / secondary button ---- */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--terra-deep);
+  border: 1.5px solid var(--terra);
+  border-radius: 12px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+.btn-outline:hover {
+  background: rgba(192, 106, 66, 0.08);
+}
+.btn-outline:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---- Text link button ---- */
+.btn-text {
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  color: var(--link);
+  cursor: pointer;
+  padding: 8px 4px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(63, 94, 107, 0.4);
+}
+.btn-text:hover {
+  color: var(--link-hover);
+}
+.btn-text.muted {
+  color: var(--muted-2);
+  text-decoration: none;
+}
+.btn-text.muted:hover {
+  color: var(--ink);
+}
+
+/* ---- Card ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-10);
+  border-radius: var(--r-card);
+}
+
+/* ---- Selectable chip (multi-select) ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-ui);
+  font-size: 15.5px;
+  font-weight: 500;
+  min-height: 46px;
+  padding: 11px 18px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--line-18);
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+.chip:hover {
+  border-color: rgba(43, 38, 32, 0.4);
+  background: rgba(192, 106, 66, 0.05);
+}
+.chip[aria-pressed='true'] {
+  font-weight: 600;
+  background: var(--terra);
+  color: var(--on-terra);
+  border-color: var(--terra);
+  box-shadow: var(--sh-button-sm);
+}
+.chip[aria-pressed='true']:hover {
+  background: var(--terra-deep);
+  border-color: var(--terra-deep);
+}
+.chip:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---- Selectable option row (single-choice) ---- */
+.opt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-ui);
+  padding: 16px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  background: transparent;
+  border: 1.5px solid var(--line-18);
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.opt-row:hover {
+  border-color: rgba(43, 38, 32, 0.4);
+  background: rgba(192, 106, 66, 0.04);
+}
+.opt-row[aria-pressed='true'] {
+  background: var(--tint);
+  border: 2px solid var(--terra);
+}
+.opt-row:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+.opt-row .opt-check {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: transparent;
+  background: transparent;
+  border: 2px solid var(--line-18);
+}
+.opt-row[aria-pressed='true'] .opt-check {
+  background: var(--terra);
+  color: var(--on-terra);
+  border-color: var(--terra);
+}
+
+/* ---- Toggle switch ---- */
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 30px;
+  border-radius: var(--r-pill);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background: rgba(43, 38, 32, 0.22);
+  transition: background 0.18s ease;
+}
+.switch[aria-checked='true'] {
+  background: var(--terra);
+}
+.switch:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+}
+.switch .knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--on-terra);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+.switch[aria-checked='true'] .knob {
+  transform: translateX(22px);
+}
+
+/* ---- Segmented control ---- */
+.segmented {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: rgba(43, 38, 32, 0.06);
+}
+.segmented button {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.segmented button[aria-pressed='true'] {
+  background: var(--terra);
+  color: var(--on-terra);
+}
+
+/* ---- Terracotta rule (under hero titles) ---- */
+.rule {
+  width: 74px;
+  height: 3px;
+  background: var(--terra);
+  border-radius: 2px;
+}
