@@ -128,6 +128,19 @@ export function saveM8Ratings(ratings: Ratings): void {
   writeJSON(M8_KEY, ratings);
 }
 
+/** Has the user actually retaken the audit at M8 (so an "after" shape exists)? */
+export function hasM8Ratings(): boolean {
+  if (!hasStorage()) return false;
+  try {
+    const raw = window.localStorage.getItem(M8_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw) as Ratings;
+    return Object.keys(parsed).length > 0;
+  } catch {
+    return false;
+  }
+}
+
 /* ---- Module artefacts / journals ----------------------------------------- */
 
 export interface JournalEntry {

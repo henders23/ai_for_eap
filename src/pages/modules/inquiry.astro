@@ -7,47 +7,13 @@
 import Base from '../../layouts/Base.astro';
 import BeforeAfter from '../../components/BeforeAfter.tsx';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
-import type { WorkbenchConfig } from '../../components/ModuleWorkbench';
 import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
 import '../../styles/m8.css';
 
 const m = MODULES.find((x) => x.slug === 'inquiry')!;
-
-const inquiry: WorkbenchConfig = {
-  moduleId: m.num,
-  mapIt: { teap: m.mapping!.teap, unesco: m.mapping!.unesco },
-  artefact: {
-    kind: 'analysis',
-    label: 'Artefact · your inquiry',
-    fields: [
-      {
-        id: 'question',
-        label: 'My one question',
-        placeholder:
-          'Does drafting with AI before class change how my students revise afterwards?',
-      },
-      {
-        id: 'noticed',
-        label: 'What I noticed',
-        placeholder:
-          'Weaker students leant on it whole; stronger ones argued with it. Revision talk got sharper for the second group.',
-      },
-      {
-        id: 'change',
-        label: 'What I’ll change next',
-        placeholder: 'Teach the “argue with it” move explicitly, before anyone drafts…',
-        dashed: true,
-      },
-    ],
-  },
-  journalPlaceholder:
-    'Eight modules ago I’d have called this cheating. Now I can say exactly when it is and when it isn’t.',
-  exportTitle: 'You’ve finished the resource.',
-  exportBody:
-    'Baseline, artefacts, inquiry, and your before-and-after shape — all in your portfolio.',
-  exportLinkLabel: 'See your portfolio →',
-};
+const inquiry = buildWorkbenchConfig(m.num);
 ---
 
 <Base

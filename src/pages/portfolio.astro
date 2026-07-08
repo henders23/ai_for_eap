@@ -1,69 +1,17 @@
 ---
 /**
- * Portfolio — placeholder until P5. Will assemble kept artefacts + the M0/M8
- * radar and export to PDF (window.print). Depends on the module workspaces.
+ * Portfolio — the assembled document + PDF export. Reads across all stores via
+ * the Portfolio island; @media print (in portfolio.css) flattens it for the PDF.
  */
 import Base from '../layouts/Base.astro';
+import Portfolio from '../components/Portfolio.tsx';
+import '../styles/portfolio.css';
 ---
 
 <Base
   title="Portfolio"
   description="Your assembled portfolio of kept work — exports to PDF, stays in your browser."
+  maxWidth="none"
 >
-  <section class="placeholder">
-    <span class="eyebrow">Coming soon</span>
-    <h1>Your portfolio</h1>
-    <div class="rule"></div>
-    <p>
-      As you work through the modules, anything you choose to keep gathers here —
-      your starting shape, your analyses, your notes — as one calm, editorial
-      document you can export to PDF. Nothing is kept unless you ask it to be.
-    </p>
-    <p class="fine">
-      Everything stays in your own browser. No account, no tracking.
-    </p>
-    <div class="cta-row">
-      <a class="btn" href="/self-audit">Take the self-audit →</a>
-      <a class="browse" href="/modules">or browse the modules</a>
-    </div>
-  </section>
+  <Portfolio client:load />
 </Base>
-
-<style>
-  .placeholder {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: clamp(64px, 10vw, 120px) var(--gutter) 120px;
-  }
-  .placeholder h1 {
-    margin: 18px 0 0;
-    font-size: clamp(36px, 5vw, 56px);
-    letter-spacing: var(--ls-hero);
-    line-height: 1.03;
-  }
-  .placeholder .rule { margin-top: 26px; }
-  .placeholder p {
-    margin: 24px 0 0;
-    font-family: var(--font-ui);
-    font-size: 18px;
-    line-height: var(--lh-body);
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-  .placeholder p.fine {
-    font-size: 14px;
-    color: var(--muted-2);
-  }
-  .cta-row {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-  .placeholder .btn { text-decoration: none; }
-  .placeholder .browse {
-    font-family: var(--font-ui);
-    font-size: 16px;
-  }
-</style>

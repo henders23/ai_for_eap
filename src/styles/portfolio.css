@@ -1,0 +1,421 @@
+/* ============================================================================
+   Portfolio — the assembled, editorial document. Reads across all stores.
+   @media print hides [data-noprint] and flattens to paper for the PDF export.
+   Values transcribed from the design handoff (Portfolio).
+   ============================================================================ */
+
+.pf-main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---- Title ---- */
+.pf-title {
+  padding: clamp(44px, 6vw, 76px) 0 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.pf-title .lead-col { max-width: 60ch; }
+.pf-title h1 {
+  margin: 16px 0 0;
+  font-size: clamp(38px, 5.2vw, 60px);
+  line-height: 1.03;
+  letter-spacing: var(--ls-hero);
+}
+.pf-title p {
+  margin: 20px 0 0;
+  font-family: var(--font-ui);
+  font-size: 17.5px;
+  line-height: var(--lh-body);
+  color: var(--ink-soft);
+}
+.pf-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  background: var(--terra);
+  color: var(--on-terra);
+  font-family: var(--font-ui);
+  font-size: 15.5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 13px;
+  padding: 13px 22px;
+  cursor: pointer;
+  box-shadow: var(--sh-button);
+  transition: background 0.18s ease;
+  white-space: nowrap;
+}
+.pf-export:hover { background: var(--terra-deep); }
+.pf-export:focus-visible { outline: var(--focus); outline-offset: 3px; }
+
+.pf-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--muted-2);
+  padding: 6px 0 24px;
+  border-bottom: 1px solid var(--line-14);
+}
+
+/* ---- Entry section headers ---- */
+.pf-entry { padding: 40px 0; }
+.pf-entry--tight { padding: 20px 0 40px; }
+.pf-entry--journal { padding: 0 0 40px; }
+.pf-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.pf-entry-head .titlewrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.pf-entry-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--terra);
+}
+.pf-entry-num--blue { color: var(--blue); }
+.pf-entry-head h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+}
+.pf-entry-head h2.sm { font-size: 22px; }
+.pf-pill {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terra-deep);
+  background: rgba(192, 106, 66, 0.12);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+/* ---- Baseline radar entry ---- */
+.pf-radar-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line-10);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 32px);
+}
+.pf-radar-svg-wrap { flex: 1 1 320px; min-width: 300px; }
+.pf-radar-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  overflow: visible;
+}
+.pf-radar-note { flex: 1 1 240px; min-width: 240px; }
+.pf-radar-note .big {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pf-radar-note .sub {
+  margin: 12px 0 0;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+.pf-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.pf-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.pf-legend .sw-now { width: 14px; height: 3px; background: var(--terra); border-radius: 2px; }
+.pf-legend .sw-after { width: 14px; height: 0; border-top: 2px dashed var(--blue); }
+.pf-radar-note .hint {
+  margin: 14px 0 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--muted-3);
+}
+
+/* ---- Artefact entry (analysis fields) ---- */
+.pf-artefact-card {
+  background: var(--card);
+  border: 1px solid var(--line-10);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 32px);
+}
+.pf-artefact-card .standfirst {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+.pf-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.pf-field .flabel {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+.pf-field .fvalue {
+  margin: 6px 0 0;
+  font-family: var(--font-ui);
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.pf-field .fvalue.italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+}
+
+/* ---- Task-redesign entry ---- */
+.pf-task {
+  display: grid;
+  gap: 16px;
+}
+.pf-task-box {
+  background: var(--paper);
+  border: 1px solid var(--line-12);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.pf-task-box.after { border-color: rgba(63, 107, 84, 0.4); }
+.pf-task-box .tlabel {
+  margin: 0 0 6px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pf-task-box.before .tlabel { color: var(--terra-deep); }
+.pf-task-box.after .tlabel { color: var(--green); }
+.pf-task-box .ttext {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.pf-checklist-summary {
+  margin: 4px 0 0;
+  font-family: var(--font-ui);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---- Journal entry ---- */
+.pf-keep-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--muted);
+  padding: 4px;
+}
+.pf-keep-toggle:focus-visible { outline: var(--focus); outline-offset: 3px; }
+.pf-keep-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(43, 38, 32, 0.22);
+  transition: background 0.18s ease;
+}
+.pf-keep-switch.on { background: var(--terra); }
+.pf-keep-switch .knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--on-terra);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+.pf-keep-switch.on .knob { transform: translateX(18px); }
+.pf-journal-kept {
+  background: var(--panel);
+  border: 1px solid rgba(43, 38, 32, 0.08);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 30px);
+}
+.pf-journal-kept p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+.pf-journal-hidden {
+  border: 1.5px dashed rgba(43, 38, 32, 0.2);
+  border-radius: 18px;
+  padding: 22px;
+  font-family: var(--font-ui);
+  font-size: 14.5px;
+  color: var(--muted-3);
+}
+
+/* ---- Where-it-maps index ---- */
+.pf-map-section {
+  padding: 20px 0 40px;
+  border-top: 1px solid var(--line-14);
+}
+.pf-map-head { margin: 30px 0 8px; }
+.pf-map-head h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+}
+.pf-map-head p {
+  margin: 8px 0 0;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 56ch;
+}
+.pf-map-head a { font-weight: 600; color: var(--terra-deep); }
+.pf-map-list {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-12);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.pf-map-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line-10);
+  flex-wrap: wrap;
+}
+.pf-map-row:last-child { border-bottom: none; }
+.pf-map-row .fw { flex: 1 1 300px; }
+.pf-map-row .fw-name {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-3);
+}
+.pf-map-row .fw-area {
+  margin: 3px 0 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+}
+.pf-chip {
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pf-chip.ok { color: var(--terra-deep); background: rgba(192, 106, 66, 0.14); }
+.pf-chip.later { color: var(--muted-2); background: rgba(43, 38, 32, 0.06); }
+.pf-map-caveat {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--muted-3);
+}
+
+/* ---- Empty state ---- */
+.pf-empty {
+  background: var(--card);
+  border: 1px dashed var(--line-18);
+  border-radius: 18px;
+  padding: clamp(24px, 4vw, 40px);
+  text-align: center;
+}
+.pf-empty p {
+  margin: 0 auto;
+  max-width: 46ch;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.pf-empty .btn { text-decoration: none; margin-top: 20px; }
+
+/* ---- Footer ---- */
+.pf-footer {
+  padding: 24px 0 72px;
+  border-top: 1px solid var(--line-14);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.pf-footer p {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  color: var(--muted-2);
+  max-width: 60ch;
+}
+
+/* ---- Print ---- */
+@media print {
+  .pf-main { max-width: none; padding: 0; }
+  .pf-entry, .pf-entry--tight, .pf-entry--journal, .pf-map-section { padding: 18px 0; }
+  .pf-radar-card, .pf-artefact-card, .pf-journal-kept, .pf-map-list {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}

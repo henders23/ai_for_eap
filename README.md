@@ -98,7 +98,13 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   baseline + a solid "now" polygon that grows live as you re-rate the eight items),
   a running summary (moved X of 8 + biggest shift), and the inquiry workbench
   (reuses the P3 template). M0→M8 threading is real: one stored ratings object.
-- [ ] P5 — Portfolio + PDF export.
+- [x] **P5 — Portfolio + PDF export:** the first read-across of every store. The
+  M0 baseline radar (+ dashed M8 "after" overlay once retaken), dynamic artefact +
+  journal entries with a per-journal "Kept in portfolio" toggle (off → a private
+  placeholder that never prints), a "Where it maps" index derived from kept
+  artefacts, and "Export to PDF" (`window.print()` with an `@media print` sheet
+  that hides nav/controls). Per-module artefact content is now centralized in
+  `lib/module-content.ts` — one source for the workbench pages and the portfolio.
 - [ ] P6 — Framework map (coverage matrix fed by "Map it" evidence).
 - [ ] P7 — Author the remaining modules (M1, M3–M5, M7).
 - [ ] P8 — Citation pass: finalise the crosswalk cell assignments against source.

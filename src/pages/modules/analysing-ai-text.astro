@@ -6,49 +6,12 @@
 import Base from '../../layouts/Base.astro';
 import ModuleHeader from '../../components/ModuleHeader.astro';
 import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
-import type { WorkbenchConfig } from '../../components/ModuleWorkbench';
 import { MODULES } from '../../lib/modules';
+import { buildWorkbenchConfig } from '../../lib/module-content';
 import '../../styles/workspace.css';
 
 const m = MODULES.find((x) => x.slug === 'analysing-ai-text')!;
-
-const config: WorkbenchConfig = {
-  moduleId: m.num,
-  mapIt: { teap: m.mapping!.teap, unesco: m.mapping!.unesco },
-  artefact: {
-    kind: 'analysis',
-    heading: 'Analyse the specimen',
-    fields: [
-      {
-        id: 'genre-moves',
-        label: 'Genre moves you can name',
-        placeholder:
-          'e.g. Topic → gap → method → over-claimed significance. Textbook CARS, but bloodless.',
-      },
-      {
-        id: 'hollow',
-        label: 'Fluent, but hollow',
-        placeholder:
-          'e.g. “Robust framework”, “transformative potential” — confident register, no findings.',
-      },
-      {
-        id: 'verdict',
-        label: 'Your one-line verdict',
-        placeholder: 'A competent abstract of a study that was never done…',
-        dashed: true,
-      },
-    ],
-    hasDialogue: true,
-    dialogueHint: 'An exchange with a model, or a colleague, worth thinking about later.',
-    dialoguePlaceholder:
-      'You — Rewrite this so it actually reports findings.\nModel — Here is a revised version… (and it invents three numbers)',
-  },
-  journalPlaceholder:
-    'What did naming the moves change for you? (e.g. how you’ll give feedback — and how fair it is.)',
-  exportTitle: 'That’s your first M2 artefact.',
-  exportBody:
-    'It stays in your browser. Export the portfolio to PDF whenever you like.',
-};
+const config = buildWorkbenchConfig(m.num);
 ---
 
 <Base
