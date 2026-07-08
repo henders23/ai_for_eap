@@ -1,0 +1,99 @@
+---
+/**
+ * M6 — Designing an AI-aware task. A different template shape: the artefact is a
+ * task redesign (segmented before/after) plus a six-question checklist.
+ */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import type { WorkbenchConfig } from '../../components/ModuleWorkbench';
+import { MODULES } from '../../lib/modules';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'designing-ai-aware-tasks')!;
+
+const config: WorkbenchConfig = {
+  moduleId: m.num,
+  mapIt: { teap: m.mapping!.teap, unesco: m.mapping!.unesco },
+  artefact: {
+    kind: 'task-redesign',
+    before: {
+      placeholder: '“Write a 1,000-word summary of a journal article of your choice.”',
+      tag: 'AI walks through',
+      note:
+        'A model returns a competent summary in seconds. The reading and condensing — the actual learning — is the part that gets skipped.',
+    },
+    after: {
+      placeholder:
+        '“Bring the article and an AI-written summary of it. In class, mark where the summary is thin, wrong, or misses the argument — then write a 300-word corrective only someone who read the article could write.”',
+      tag: 'Now the reading is the shortcut',
+      note: 'An AI-only answer has nothing to correct. The thinking is visible, and it’s theirs.',
+    },
+    checklist: [
+      'Does the task still make the thinking visible?',
+      'Would an AI-only answer be obviously thin?',
+      'Is the process assessed, not just the product?',
+      'Does it treat AI as something to study, not a shortcut?',
+      'Is it honest about where AI is allowed?',
+      'Is a student’s own reading the easier route through?',
+    ],
+    defaultChecked: [0, 1, 2],
+  },
+  journalPlaceholder:
+    'What did redesigning one task teach you? (e.g. more than any detection tool — and what you’ll redesign next.)',
+  exportTitle: 'A redesigned task, ready to teach.',
+  exportBody: 'Kept in your browser; export the portfolio to PDF whenever you like.',
+};
+---
+
+<Base
+  title={m.title}
+  description="Redesign a teaching task so the thinking stays the student’s — without banning AI."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 6" duration={m.duration!} title="Designing an AI-aware task" />
+
+    <section class="ws-body">
+      <div class="ws-cols">
+        <!-- reading column (static) -->
+        <div class="ws-reading">
+          <p class="standfirst">
+            You don’t need to ban it. You need to design so the thinking is still
+            theirs.
+          </p>
+          <div class="ws-prose">
+            <p>
+              The panic move is to forbid AI and police the result. It rarely
+              works, it corrodes trust, and it puts you in an arms race you can’t
+              win. The calmer move is older than AI: design the task so that doing
+              the thinking is the only way through it.
+            </p>
+            <p>
+              Take a task you already set. Find where a model walks straight
+              through it — then redesign so an AI-only answer is visibly thin, and
+              a student’s own reading becomes the shortcut rather than the
+              obstacle.
+            </p>
+            <p>
+              Work on the right: flip the task between how it stands and a
+              redesign, then hold your new version against the six checklist
+              questions.
+            </p>
+          </div>
+
+          <div class="pull-quote">
+            <p>
+              “The trick wasn’t catching AI. It was setting work where a shortcut
+              left nothing worth handing in.”
+            </p>
+            <p>— a foundation-year tutor, after one redesign</p>
+          </div>
+        </div>
+
+        <!-- workbench rail (island) -->
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

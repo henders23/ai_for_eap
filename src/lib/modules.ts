@@ -10,6 +10,24 @@
    ============================================================================ */
 
 export type ModuleKind = 'done' | 'baseline' | 'todo';
+export type UnescoLevel = 'Acquire' | 'Deepen' | 'Create';
+
+export interface MapLine {
+  framework: string;
+  detail: string;
+}
+
+/** The module→framework crosswalk. NAMES/CODES are source-exact; which module
+ *  evidences which area is THIS RESOURCE'S OWN interpretive mapping — shown with
+ *  a "draft — to be verified" caveat, never as an official statement. */
+export interface ModuleMapping {
+  /** Display lines for the "Map it" popover (verbatim from the design). */
+  teap: MapLine;
+  unesco: MapLine;
+  /** Structured ids for the Framework-map coverage matrix (P6). */
+  baleapAreas: string[]; // ids from BALEAP_AREAS
+  unescoBlocks: { aspect: number; level: UnescoLevel }[];
+}
 
 export interface ModuleDef {
   num: string; // 'M0' … 'M8'
@@ -31,6 +49,10 @@ export interface ModuleDef {
   built: boolean;
   /** The route to use when built. */
   route: string;
+  /** Short duration/shape line shown in the module header (built modules). */
+  duration?: string;
+  /** Framework crosswalk (built modules). */
+  mapping?: ModuleMapping;
 }
 
 export const MODULES: ModuleDef[] = [
@@ -78,8 +100,18 @@ export const MODULES: ModuleDef[] = [
     status: 'Ready',
     kind: 'todo',
     note: 'Your analyses here build the grid that becomes the M8 index.',
-    built: false,
+    built: true,
     route: '/modules/analysing-ai-text',
+    duration: '~25 min · reading + one artefact',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'analysing texts & selecting materials' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'critical understanding of AI' },
+      baleapAreas: ['planning', 'teaching'],
+      unescoBlocks: [
+        { aspect: 1, level: 'Acquire' }, // Human agency (critical understanding)
+        { aspect: 3, level: 'Acquire' }, // Basic AI techniques and applications
+      ],
+    },
   },
   {
     num: 'M3',
@@ -134,8 +166,17 @@ export const MODULES: ModuleDef[] = [
     cta: 'Open module',
     status: 'Not started',
     kind: 'todo',
-    built: false,
+    built: true,
     route: '/modules/designing-ai-aware-tasks',
+    duration: '~30 min · redesign one task',
+    mapping: {
+      teap: { framework: 'TEAP', detail: 'course & task design; assessment' },
+      unesco: { framework: 'UNESCO AI competency', detail: 'AI pedagogy' },
+      baleapAreas: ['planning', 'assessment'],
+      unescoBlocks: [
+        { aspect: 4, level: 'Deepen' }, // AI–pedagogy integration
+      ],
+    },
   },
   {
     num: 'M7',

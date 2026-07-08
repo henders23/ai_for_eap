@@ -88,7 +88,12 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
   toolkit, exemplars; the vertical spine, progress card, suggested routes) plus
   progressive-enhancement that reflects real Module-0 completion. Placeholder
   pages for `/map` and `/portfolio` keep the nav whole.
-- [ ] P3 — Module workspace templates (M2 analysis, M6 task-redesign) + artefact/journal store.
+- [x] **P3 — Module workspace templates:** a reusable, config-driven workbench
+  island (editable + persisted artefact fields, journal with include-in-portfolio
+  toggle defaulting off, a "Map it" popover carrying the draft-crosswalk caveat,
+  export nudge). Worked as **M2** (analysis: three fields + optional dialogue) and
+  **M6** (task-redesign: segmented before/after + six-question checklist). Reading
+  columns stay static Astro so the remaining modules are easy to author.
 - [ ] P4 — M8 before/after inquiry (reuses M0 ratings; overlay radar).
 - [ ] P5 — Portfolio + PDF export.
 - [ ] P6 — Framework map (coverage matrix fed by "Map it" evidence).

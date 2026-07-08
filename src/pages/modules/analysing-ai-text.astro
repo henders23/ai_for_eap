@@ -1,0 +1,111 @@
+---
+/**
+ * M2 — Analysing AI-written academic text.
+ * Reading column is static/editorial; the interactive workbench is the island.
+ */
+import Base from '../../layouts/Base.astro';
+import ModuleHeader from '../../components/ModuleHeader.astro';
+import ModuleWorkbench from '../../components/ModuleWorkbench.tsx';
+import type { WorkbenchConfig } from '../../components/ModuleWorkbench';
+import { MODULES } from '../../lib/modules';
+import '../../styles/workspace.css';
+
+const m = MODULES.find((x) => x.slug === 'analysing-ai-text')!;
+
+const config: WorkbenchConfig = {
+  moduleId: m.num,
+  mapIt: { teap: m.mapping!.teap, unesco: m.mapping!.unesco },
+  artefact: {
+    kind: 'analysis',
+    heading: 'Analyse the specimen',
+    fields: [
+      {
+        id: 'genre-moves',
+        label: 'Genre moves you can name',
+        placeholder:
+          'e.g. Topic → gap → method → over-claimed significance. Textbook CARS, but bloodless.',
+      },
+      {
+        id: 'hollow',
+        label: 'Fluent, but hollow',
+        placeholder:
+          'e.g. “Robust framework”, “transformative potential” — confident register, no findings.',
+      },
+      {
+        id: 'verdict',
+        label: 'Your one-line verdict',
+        placeholder: 'A competent abstract of a study that was never done…',
+        dashed: true,
+      },
+    ],
+    hasDialogue: true,
+    dialogueHint: 'An exchange with a model, or a colleague, worth thinking about later.',
+    dialoguePlaceholder:
+      'You — Rewrite this so it actually reports findings.\nModel — Here is a revised version… (and it invents three numbers)',
+  },
+  journalPlaceholder:
+    'What did naming the moves change for you? (e.g. how you’ll give feedback — and how fair it is.)',
+  exportTitle: 'That’s your first M2 artefact.',
+  exportBody:
+    'It stays in your browser. Export the portfolio to PDF whenever you like.',
+};
+---
+
+<Base
+  title={m.title}
+  description="Read AI-written academic prose the way you already read genre and discourse — and produce your first analysis artefact."
+  maxWidth="none"
+>
+  <div class="ws-main">
+    <ModuleHeader label="Module 2" duration={m.duration!} title="Analysing AI-written academic text" />
+
+    <section class="ws-body">
+      <div class="ws-cols">
+        <!-- reading column (static) -->
+        <div class="ws-reading">
+          <p class="standfirst">
+            Read it the way you already read genre and discourse — and the
+            confident hollowness gives itself away.
+          </p>
+          <div class="ws-prose">
+            <p>
+              You already have the instrument for this. Every time you teach a
+              student to notice moves, hedges, and the difference between a claim
+              and its warrant, you are doing exactly what you need to read
+              machine-written prose critically. The machine is fluent. It is often
+              not <em>saying</em> anything.
+            </p>
+            <p>
+              Below is an AI-written abstract. Read it once for register, then
+              again for substance — and watch the two readings come apart.
+            </p>
+          </div>
+
+          <figure class="specimen">
+            <figcaption>AI-written abstract · specimen</figcaption>
+            <p>
+              This study explores the <span class="hollow">multifaceted role</span> of
+              translanguaging in academic writing development among multilingual
+              postgraduates. Drawing on a <span class="hollow">robust mixed-methods
+              framework</span>, it demonstrates that translanguaging practices
+              significantly enhance rhetorical flexibility. Findings underscore the
+              <span class="hollow">transformative potential</span> of pedagogies that
+              embrace students’ full repertoires
+              <span class="invented">(García &amp; Martínez, 2019)</span>.
+            </p>
+          </figure>
+
+          <p class="ws-prose" style="margin-top:22px;">
+            Every sentence has the <em>shape</em> of a finding without the
+            substance of one. Name the moves in the workbench, flag the one
+            citation you’d want to verify, and you’ve produced your first M2
+            artefact.
+          </p>
+        </div>
+
+        <!-- workbench rail (island) -->
+        <ModuleWorkbench client:load config={config} />
+      </div>
+    </section>
+  </div>
+</Base>

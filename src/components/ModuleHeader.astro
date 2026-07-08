@@ -1,0 +1,19 @@
+---
+/** Module header: back link, module label + duration, title. */
+interface Props {
+  label: string; // e.g. "Module 2"
+  duration: string; // e.g. "~25 min · reading + one artefact"
+  title: string;
+}
+const { label, duration, title } = Astro.props;
+---
+
+<section class="ws-header">
+  <a class="ws-back" href="/modules">← All modules</a>
+  <div class="ws-meta">
+    <span class="mod-label">{label}</span>
+    <span class="dot"></span>
+    <span class="mod-duration">{duration}</span>
+  </div>
+  <h1>{title}</h1>
+</section>

@@ -138,10 +138,30 @@ export interface JournalEntry {
 
 export interface ModuleArtefact {
   moduleId: string;
-  /** Free-form field values keyed by the module template's field id. */
+  /** Free-form text field values keyed by the module template's field id
+   *  (analysis fields, task before/after, pasted dialogue, …). */
   fields: Record<string, string>;
+  /** Tap-to-tick checklist state (e.g. M6 redesign checklist). */
+  checklist: Record<number, boolean>;
+  /** Segmented view state (e.g. M6 'before' | 'after'). */
+  view: string;
+  /** Whether the optional dialogue affordance is expanded. */
+  dialogueOpen: boolean;
   journal: JournalEntry;
   updatedAt: number | null;
+}
+
+export function emptyArtefact(moduleId: string): ModuleArtefact {
+  return {
+    moduleId,
+    fields: {},
+    checklist: {},
+    view: 'before',
+    dialogueOpen: false,
+    // README: the per-journal-entry "include in portfolio" toggle defaults OFF.
+    journal: { text: '', includeInPortfolio: false },
+    updatedAt: null,
+  };
 }
 
 export type ArtefactStore = Record<string, ModuleArtefact>;
@@ -150,10 +170,26 @@ export function loadArtefacts(): ArtefactStore {
   return readJSON<ArtefactStore>(ARTEFACTS_KEY, {});
 }
 
+/** Load one module's artefact, merged over sensible defaults. */
+export function loadArtefact(moduleId: string): ModuleArtefact {
+  const stored = loadArtefacts()[moduleId];
+  return { ...emptyArtefact(moduleId), ...(stored ?? {}) };
+}
+
 export function saveArtefact(artefact: ModuleArtefact): void {
   const all = loadArtefacts();
   all[artefact.moduleId] = artefact;
   writeJSON(ARTEFACTS_KEY, all);
+}
+
+/** Is this module's artefact "kept" — i.e. it should appear in the portfolio /
+ *  count as framework evidence? True when the journal is kept, or any artefact
+ *  field / checklist tick carries content. */
+export function artefactKept(a: ModuleArtefact): boolean {
+  if (a.journal.includeInPortfolio && a.journal.text.trim()) return true;
+  if (Object.values(a.fields).some((v) => v.trim())) return true;
+  if (Object.values(a.checklist).some(Boolean)) return true;
+  return false;
 }
 
 /* ---- Framework evidence (fed by "Map it") --------------------------------- */
