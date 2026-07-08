@@ -1,0 +1,121 @@
+---
+/**
+ * Module map — the nine-module journey / vertical spine.
+ * Progress card + Module-0 status reflect real localStorage via a small
+ * progressive-enhancement script (defaults to the design's baseline shape).
+ */
+import Base from '../layouts/Base.astro';
+import { MODULES, moduleHref, ROUTES } from '../lib/modules';
+import '../styles/module-map.css';
+---
+
+<Base title="Modules" maxWidth="none">
+  <div class="map-main">
+    <section class="map-intro">
+      <span class="eyebrow">The journey</span>
+      <h1>Nine modules, your own order.</h1>
+      <p>
+        You start and end with a self-audit, so you can see how far you’ve moved.
+        Everything between is an offer — take the modules in the order that suits
+        you, or follow one of the three suggested routes.
+      </p>
+    </section>
+
+    <!-- progress + routes -->
+    <section class="map-status">
+      <div class="map-status-row">
+        <div class="progress-card">
+          <span class="label">Your progress</span>
+          <div class="progress-count">
+            <span class="big" data-started-count>1</span>
+            <span class="of">of 9 started</span>
+          </div>
+          <div class="progress-bar">
+            <span data-progress-fill style="width:11%"></span>
+          </div>
+        </div>
+        <div class="routes-card">
+          <span class="label">Three suggested routes</span>
+          <div class="routes-grid">
+            {
+              ROUTES.map((r) => (
+                <div>
+                  <p class="r-label">{r.label}</p>
+                  <p class="r-order">{r.order}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- spine -->
+    <section class="spine-section">
+      <div class="spine">
+        <div class="spine-line"></div>
+        <div class="spine-list">
+          {
+            MODULES.map((m) => {
+              const statusClass =
+                m.kind === 'done' ? 'spine-status--done' : 'spine-status--todo';
+              return (
+                <a class="spine-item" href={moduleHref(m)} data-module={m.num}>
+                  <span class={`spine-dot spine-dot--${m.kind}`}>{m.num}</span>
+                  <div class="spine-card">
+                    <div class="spine-card-head">
+                      <h3>{m.title}</h3>
+                      <span
+                        class={`spine-status ${statusClass}`}
+                        data-status
+                      >
+                        {m.status}
+                      </span>
+                    </div>
+                    <p class="blurb">{m.mapBlurb}</p>
+                    {m.note && <p class="note">{m.note}</p>}
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Progressive enhancement: Module-0 status + overall "started" count from real state.
+  import { auditStarted, auditCompleted } from '../lib/store';
+
+  const started = auditStarted();
+  const done = auditCompleted();
+
+  // Overall started count (only M0 can currently carry activity).
+  const startedCount = started ? 1 : 0;
+  const countEl = document.querySelector('[data-started-count]');
+  const fillEl = document.querySelector('[data-progress-fill]') as HTMLElement | null;
+  if (countEl) countEl.textContent = String(startedCount);
+  if (fillEl) fillEl.style.width = `${Math.round((startedCount / 9) * 100)}%`;
+
+  // Module-0 status pill + dot: filled/Done once completed, ring otherwise.
+  const m0 = document.querySelector('.spine-item[data-module="M0"]');
+  const pill = m0?.querySelector('[data-status]') as HTMLElement | null;
+  const dot = m0?.querySelector('.spine-dot') as HTMLElement | null;
+  if (pill) {
+    if (done) {
+      pill.textContent = 'Done';
+      pill.classList.add('spine-status--done');
+      pill.classList.remove('spine-status--todo');
+    } else {
+      pill.textContent = started ? 'In progress' : 'Not started';
+      pill.classList.remove('spine-status--done');
+      pill.classList.add('spine-status--todo');
+    }
+  }
+  if (dot && done) {
+    dot.classList.add('spine-dot--done');
+    dot.classList.remove('spine-dot--baseline');
+  }
+</script>

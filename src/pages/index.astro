@@ -1,81 +1,123 @@
 ---
 /**
- * Landing (placeholder). The full Library Home is a later milestone (P2);
- * for now this is a calm holding page whose primary action is the self-audit.
+ * Library home — the "explore everything" hub.
+ * Static/editorial; a tiny progressive-enhancement script reflects real
+ * Module-0 progress (Done chip) from localStorage without shipping an island.
  */
 import Base from '../layouts/Base.astro';
+import { MODULES, moduleHref, TOOLKIT, EXEMPLARS } from '../lib/modules';
+import '../styles/library.css';
 ---
 
-<Base title="AI for EAP Practitioners">
-  <section class="landing">
-    <span class="eyebrow">AI for EAP Practitioners</span>
-    <h1>Using AI in your teaching, thought through.</h1>
-    <div class="rule"></div>
-    <p class="lead">
-      An open, self-paced resource for university English for Academic Purposes
-      teachers who want to use AI thoughtfully — with the reasoning, the frameworks
-      and the classroom judgement to go with it.
-    </p>
-    <p class="aside">
-      Start by finding where you are. Two minutes, a few taps, no wrong answers.
-    </p>
-    <div class="actions">
-      <a class="btn" href="/self-audit">Take the 2-minute self-audit<span class="trailing">· Module 0</span></a>
-    </div>
-    <p class="license">
-      Free and openly licensed (CC BY 4.0). No account, no tracking — everything you
-      write stays in your browser.
-    </p>
-  </section>
+<Base title="AI for EAP Practitioners" maxWidth="none">
+  <div class="lib-main">
+    <!-- HERO -->
+    <section class="lib-hero">
+      <span class="eyebrow">Open-access · Self-paced</span>
+      <h1>Using AI in your teaching, thought through.</h1>
+      <p class="lead">
+        Nine short modules for EAP practitioners who are curious, cautious, or
+        somewhere in between — light on the surface, serious underneath. Work
+        through it in your own order, keep what you make, and leave with a
+        portfolio.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="/self-audit">Start with the 2-min self-audit →</a>
+        <a class="browse-link" href="/modules">or browse the modules</a>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+    <section class="modules-section">
+      <div class="sec-head sec-rule">
+        <h2>The nine modules</h2>
+        <span class="sec-aside">Any order is fine. Nothing is locked.</span>
+      </div>
+      <div class="modules-grid">
+        {
+          MODULES.map((m) => (
+            <a class="module-card" href={moduleHref(m)} data-module={m.num}>
+              <div class="module-card-top">
+                <span class="module-num">{m.num}</span>
+                {m.num === 'M0' && (
+                  <span class="chip-done" data-done-chip style="display:none">
+                    Done
+                  </span>
+                )}
+              </div>
+              <h3>{m.title}</h3>
+              <p>{m.homeBlurb}</p>
+              <div class="spacer" />
+              <span class="card-cta">{m.cta} →</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- TOOLKIT -->
+    <section class="toolkit-section" id="toolkit">
+      <div class="toolkit-panel">
+        <div class="sec-head">
+          <h2>The toolkit</h2>
+          <span class="sec-aside">Practical, honest, ready to adapt.</span>
+        </div>
+        <div class="toolkit-grid">
+          {
+            TOOLKIT.map((t) => (
+              <a class="toolkit-card" href="/modules">
+                <h3>{t.title}</h3>
+                <p>{t.blurb}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEMPLARS -->
+    <section class="exemplars-section">
+      <div class="sec-rule">
+        <h2 style="margin:0;font-size:var(--fs-h2);letter-spacing:-0.015em;">
+          From other practitioners
+        </h2>
+        <p class="intro">
+          Peer-level examples from people at your stage — not polished expert
+          models to measure yourself against.
+        </p>
+        <div class="exemplars-grid">
+          {
+            EXEMPLARS.map((e) => (
+              <a class="exemplar-card" href="/modules">
+                <h3>{e.title}</h3>
+                <p>{e.blurb}</p>
+                <div class="spacer" />
+                <span class="by">{e.by}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="lib-footer">
+      <p>
+        Free and openly licensed (CC BY 4.0). No account, no tracking —
+        everything you write stays in your own browser, and exports to PDF
+        whenever you want it.
+      </p>
+      <span class="version">Module 0 · v0.1</span>
+    </footer>
+  </div>
 </Base>
 
-<style>
-  .landing {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: clamp(56px, 9vw, 110px) var(--gutter) 120px;
+<script>
+  // Progressive enhancement: reflect real Module-0 completion.
+  import { auditCompleted } from '../lib/store';
+  const card = document.querySelector('.module-card[data-module="M0"]');
+  const chip = card?.querySelector('[data-done-chip]') as HTMLElement | null;
+  if (chip) {
+    chip.style.display = auditCompleted() ? '' : 'none';
   }
-  .landing h1 {
-    margin: 20px 0 0;
-    font-size: var(--fs-hero);
-    line-height: 1.0;
-    letter-spacing: var(--ls-hero);
-    text-wrap: balance;
-  }
-  .landing .rule {
-    margin-top: 30px;
-  }
-  .lead {
-    margin: 28px 0 0;
-    font-family: var(--font-ui);
-    font-size: 19px;
-    line-height: var(--lh-body);
-    color: var(--ink-soft);
-    max-width: 52ch;
-  }
-  .aside {
-    margin: 18px 0 0;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 18.5px;
-    line-height: 1.5;
-    color: var(--blue);
-    max-width: 46ch;
-  }
-  .actions {
-    margin-top: 44px;
-  }
-  .actions .btn {
-    text-decoration: none;
-    min-height: 56px;
-    font-size: 17px;
-    padding: 16px 30px;
-    border-radius: 14px;
-  }
-  .license {
-    margin-top: 48px;
-    font-family: var(--font-ui);
-    font-size: 13px;
-    color: var(--muted-2);
-  }
-</style>
+</script>

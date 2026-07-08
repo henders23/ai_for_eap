@@ -12,11 +12,22 @@ interface Props {
   variant?: 'full' | 'audit';
   active?: string;
 }
-const { variant = 'full', active } = Astro.props;
+const { variant = 'full' } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const active =
+  Astro.props.active ??
+  (path === '/modules'
+    ? 'modules'
+    : path === '/map'
+      ? 'map'
+      : path === '/portfolio'
+        ? 'portfolio'
+        : undefined);
 
 const nav = [
   { label: 'Modules', href: '/modules', key: 'modules' },
-  { label: 'Toolkit', href: '/toolkit', key: 'toolkit' },
+  { label: 'Toolkit', href: '/#toolkit', key: 'toolkit' },
   { label: 'Map', href: '/map', key: 'map' },
   { label: 'Portfolio', href: '/portfolio', key: 'portfolio' },
 ];

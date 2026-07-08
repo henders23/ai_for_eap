@@ -100,6 +100,21 @@ export function loadBaselineRatings(): Ratings {
   return loadAudit().ratings ?? {};
 }
 
+/** Has the user put ANY input into the self-audit (contexts/remit/feeling/ratings)? */
+export function auditStarted(s: AuditState = loadAudit()): boolean {
+  return (
+    s.contexts.length > 0 ||
+    s.remit !== null ||
+    s.feeling !== null ||
+    Object.keys(s.ratings).length > 0
+  );
+}
+
+/** Has the user reached the self-audit result (Module 0 "done")? */
+export function auditCompleted(s: AuditState = loadAudit()): boolean {
+  return s.screen === 'result' || s.pathStarted !== null;
+}
+
 /* ---- M8 retake ("now") ---------------------------------------------------- */
 
 /** M8 "now" ratings; defaults to a copy of the M0 baseline so the overlay

@@ -84,7 +84,10 @@ body endorses it, and it is always labelled that way, never as "BALEAP/UNESCO sa
 - [x] **P1 — Self-audit flow (Module 0):** 5-screen state machine (intro → s1 → s2 → s3
   → result) + explore, recommendation logic (`formal → C`, else `keen → B`, else `A`),
   radar chart, transitions, toast, persistence.
-- [ ] P2 — Library home + Module map (nine-module shell).
+- [x] **P2 — Library home + Module map:** the nine-module shell (hero, module grid,
+  toolkit, exemplars; the vertical spine, progress card, suggested routes) plus
+  progressive-enhancement that reflects real Module-0 completion. Placeholder
+  pages for `/map` and `/portfolio` keep the nav whole.
 - [ ] P3 — Module workspace templates (M2 analysis, M6 task-redesign) + artefact/journal store.
 - [ ] P4 — M8 before/after inquiry (reuses M0 ratings; overlay radar).
 - [ ] P5 — Portfolio + PDF export.
